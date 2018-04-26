@@ -1,4 +1,3 @@
-
 #include "Serie.h"
 #include <string.h>
 
@@ -41,6 +40,7 @@ void inicializarSeriesHardCode(eSerie series[])
     }
 }
 
+void mostrarListaSeries(eSerie series[], int cant)
+{
 
-
-
+}
