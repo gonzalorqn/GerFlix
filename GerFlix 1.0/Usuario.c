@@ -49,15 +49,16 @@ void mostrarUsuarioConSuSerie(eUsuario usuarios[], int cantUsuarios, eSerie seri
     {
         if(usuarios[i].estado == 1)
         {
+            printf("%s ", usuarios[i].nombre);
             for(j=0;j<cantSeries;j++)
             {
-                if(series[j].idSerie == usuarios[i].idSerie)
+                if(series[j].idSerie == usuarios[i].idSerie && series[j].estado == 1)
                 {
-                    printf("%d %s %s\n",usuarios[i].idUsuario, usuarios[i].nombre, series[j].nombre);
+                    printf("%s", series[j].nombre);
                     break;
                 }
             }
-
+            printf("\n");
 
         }
     }
@@ -71,15 +72,15 @@ void mostrarSerieConSusUsuarios(eSerie series[], int cantSeries, eUsuario usuari
     {
         if(series[i].estado == 1)
         {
-            printf("%d %s %s %d\n",series[i].idSerie, series[i].nombre, series[i].genero, series[i].cantidadTemporadas);
+            printf("%s ",series[i].nombre);
             for(j=0;j<cantUsuarios;j++)
             {
-                if(series[i].idSerie == usuarios[j].idSerie)
+                if(series[i].idSerie == usuarios[j].idSerie && usuarios[j].estado == 1)
                 {
-                    printf("%s\n",usuarios[j].nombre);
+                    printf("%s ",usuarios[j].nombre);
                 }
             }
-
+            printf("\n");
 
         }
     }
