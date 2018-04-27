@@ -25,6 +25,8 @@ int main()
     mostrarListaUsuarios(listaDeUsuarios, TAMUSUARIO);
     printf("\n");
     mostrarUsuarioConSuSerie(listaDeUsuarios, TAMUSUARIO, listaDeSeries, TAMSERIE);
+    printf("\n");
+    mostrarSerieConSusUsuarios(listaDeSeries, TAMSERIE, listaDeUsuarios, TAMUSUARIO);
 
 
     return 0;

@@ -43,19 +43,44 @@ void mostrarListaUsuarios(eUsuario usuarios[], int cant)
 
 void mostrarUsuarioConSuSerie(eUsuario usuarios[], int cantUsuarios, eSerie series[], int cantSeries)
 {
-    char serie[50];
     int i;
     int j;
     for(i=0;i<cantUsuarios;i++)
     {
         if(usuarios[i].estado == 1)
         {
-            for(j=100;j!=usuarios[i].idSerie;j++)
+            for(j=0;j<cantSeries;j++)
             {
-
+                if(series[j].idSerie == usuarios[i].idSerie)
+                {
+                    printf("%d %s %s\n",usuarios[i].idUsuario, usuarios[i].nombre, series[j].nombre);
+                    break;
+                }
             }
-            strcpy(serie, series[].nombre);
-            printf("%d %s %s\n",usuarios[i].idUsuario, usuarios[i].nombre, serie);
+
+
+        }
+    }
+}
+
+void mostrarSerieConSusUsuarios(eSerie series[], int cantSeries, eUsuario usuarios[], int cantUsuarios)
+{
+    int i;
+    int j;
+    for(i=0;i<cantSeries;i++)
+    {
+        if(series[i].estado == 1)
+        {
+            printf("%d %s %s %d\n",series[i].idSerie, series[i].nombre, series[i].genero, series[i].cantidadTemporadas);
+            for(j=0;j<cantUsuarios;j++)
+            {
+                if(series[i].idSerie == usuarios[j].idSerie)
+                {
+                    printf("%s\n",usuarios[j].nombre);
+                }
+            }
+
+
         }
     }
 }
