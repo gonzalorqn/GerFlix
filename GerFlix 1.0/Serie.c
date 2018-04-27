@@ -42,5 +42,12 @@ void inicializarSeriesHardCode(eSerie series[])
 
 void mostrarListaSeries(eSerie series[], int cant)
 {
-
+    int i;
+    for(i=0;i<cant;i++)
+    {
+        if(series[i].estado == 1)
+        {
+            printf("%d %s %s %d\n",series[i].idSerie, series[i].nombre, series[i].genero, series[i].cantidadTemporadas);
+        }
+    }
 }

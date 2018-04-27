@@ -20,8 +20,11 @@ int main()
     3. Mostrar el listado de Usuarios con el nombre de la serie que ve
     4. Mostrar por cada serie, el nombre de los usuarios que la ven.
 */
-
-
+    mostrarListaSeries(listaDeSeries, TAMSERIE);
+    printf("\n");
+    mostrarListaUsuarios(listaDeUsuarios, TAMUSUARIO);
+    printf("\n");
+    mostrarUsuarioConSuSerie(listaDeUsuarios, TAMUSUARIO, listaDeSeries, TAMSERIE);
 
 
     return 0;
