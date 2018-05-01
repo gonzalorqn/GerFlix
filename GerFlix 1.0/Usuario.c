@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include "Usuario.h"
 
@@ -84,4 +85,74 @@ void mostrarSerieConSusUsuarios(eSerie series[], int cantSeries, eUsuario usuari
 
         }
     }
+}
+
+int buscarLibreUsuario(eUsuario usuarios[], int tam)
+{
+    int index=-1;
+    int i;
+
+    for(i=0;i<tam;i++)
+    {
+        if(usuarios[i].estado == 0)
+        {
+            index=i;
+            break;
+        }
+    }
+
+    return index;
+}
+
+int cargarUsuario(eUsuario usuarios[], int tam)
+{
+    int index;
+    index = buscarLibreUsuario(usuarios, tam);
+
+    if(index!=-1)
+    {
+        printf("Ingrese ID usuario: ");
+        scanf("%d", &usuarios[index].idUsuario);
+        printf("Ingrese nombre: ");
+        fflush(stdin);
+        gets(usuarios[index].nombre);
+        printf("Ingrese ID serie que ve: ");
+        scanf("%d", &usuarios[index].idSerie);
+        usuarios[index].estado=1;
+    }
+
+    return index;
+}
+
+
+int buscarIntUsuarios(eUsuario usuarios[], int tam, int cual)
+{
+    int indice = -1;
+    int i;
+    for(i=0; i<tam; i++)
+    {
+        if(usuarios[i].idUsuario==cual)
+        {
+            indice = i;
+            break;
+        }
+    }
+    return indice;
+}
+
+int bajaUsuario(eUsuario usuarios[], int tam)
+{
+    int numeroUsuario;
+    int index = -1;
+
+    printf("Ingrese usuario a dar de baja: ");
+    scanf("%d", &numeroUsuario);
+
+    index = buscarIntUsuarios(usuarios,tam,numeroUsuario);
+
+    if(index!=-1)
+    {
+        usuarios[index].estado = 0;
+    }
+    return index;
 }

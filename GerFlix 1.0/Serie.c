@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Serie.h"
 #include <string.h>
 
@@ -50,4 +51,77 @@ void mostrarListaSeries(eSerie series[], int cant)
             printf("%d %s %s %d\n",series[i].idSerie, series[i].nombre, series[i].genero, series[i].cantidadTemporadas);
         }
     }
+}
+
+int buscarLibreSerie(eSerie series[], int tam)
+{
+    int index=-1;
+    int i;
+
+    for(i=0;i<tam;i++)
+    {
+        if(series[i].estado == 0)
+        {
+            index=i;
+            break;
+        }
+    }
+
+    return index;
+}
+
+int cargarSerie(eSerie series[], int tam)
+{
+    int index;
+    index = buscarLibreSerie(series, tam);
+
+    if(index!=-1)
+    {
+        printf("Ingrese ID: ");
+        scanf("%d", &series[index].idSerie);
+        printf("Ingrese nombre: ");
+        fflush(stdin);
+        gets(series[index].nombre);
+        printf("Ingrese genero: ");
+        fflush(stdin);
+        gets(series[index].genero);
+        printf("Ingrese temporadas: ");
+        scanf("%d", &series[index].cantidadTemporadas);
+        series[index].estado=1;
+    }
+
+    return index;
+}
+
+
+int buscarIntSeries(eSerie series[], int tam, int cual)
+{
+    int indice = -1;
+    int i;
+    for(i=0; i<tam; i++)
+    {
+        if(series[i].idSerie==cual)
+        {
+            indice = i;
+            break;
+        }
+    }
+    return indice;
+}
+
+int bajaSerie(eSerie series[], int tam)
+{
+    int numeroSerie;
+    int index = -1;
+
+    printf("Ingrese serie a dar de baja: ");
+    scanf("%d", &numeroSerie);
+
+    index = buscarIntSeries(series,tam,numeroSerie);
+
+    if(index!=-1)
+    {
+        series[index].estado = 0;
+    }
+    return index;
 }
